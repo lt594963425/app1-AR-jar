@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">ARCA</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="action_add_random_poi">Create random POI</string>
+    <string name="action_add_cardinal_pois">Add cardinal direction POIs</string>
+    <string name="action_delete_last_poi">Delete last created POI</string>
+    <string name="action_delete_all_pois">Delete all POIs</string>
+
+</resources>

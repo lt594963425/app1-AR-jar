@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/arMainLayout"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:tag="arMainLayout">
+
+    <com.mvp.lt.arrr.arlib.view.PARCameraView
+        android:id="@+id/arCameraView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:tag="arCameraView"
+        />
+
+    <com.mvp.lt.arrr.arlib.view.PARView
+        android:id="@+id/arContentView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tag="arContentView"/>
+
+    <com.mvp.lt.arrr.arlib.view.PARRadarView
+        android:id="@+id/arRadarView"
+        android:layout_width="128dp"
+        android:layout_height="128dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/radar_screen"
+        android:gravity="center"
+        android:tag="arRadarView"/>
+
+    <TextView
+        android:id="@+id/deviceOrientation"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:background="#66ffffff"
+        android:inputType="text|textNoSuggestions|textMultiLine|textImeMultiLine"
+        android:padding="10dp"
+        android:tag="debugTextView"
+        android:text="debugTextView"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:textColor="@android:color/black"/>
+
+
+</RelativeLayout>
