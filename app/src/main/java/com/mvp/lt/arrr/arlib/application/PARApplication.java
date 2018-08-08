@@ -12,6 +12,8 @@ import com.mvp.lt.arrr.arlib.control.PARController;
 
 
 public class PARApplication extends PSKApplication {
+    public static boolean DEBUG = false;
+
     public PARApplication() {
     }
 
@@ -21,7 +23,12 @@ public class PARApplication extends PSKApplication {
         PARController.getInstance().init(PSKApplication.getAppContext());
     }
 
-    public String setApiKey() {
-        return "Override the setApiKey method in your PARApplication class!";
+
+    public static boolean isDEBUG() {
+        return DEBUG;
+    }
+
+    public static void setDEBUG(boolean DEBUG) {
+        PARApplication.DEBUG = DEBUG;
     }
 }

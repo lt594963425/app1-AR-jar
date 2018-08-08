@@ -121,7 +121,6 @@ public class PARFragment extends Fragment implements PSKEventListener {
         if (this._debugTextView != null && !PARController.DEBUG) {
             this._debugTextView.setVisibility(View.INVISIBLE);
         }
-
         this._arRadarView = (PARRadarView) this._mainView.findViewWithTag("arRadarView");
         return view;
     }

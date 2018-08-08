@@ -13,28 +13,43 @@ android {
     }
     buildTypes {
         release {
-            minifyEnabled true
+            buildConfigField "boolean", "API_ENV", "false"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug{
+            buildConfigField "boolean", "API_ENV", "false"
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
-    task makeJar(type: proguard.gradle.ProGuardTask, dependsOn: "build") {
-        //删除之前编译混淆jar包
-        delete'build/outputs/jar/SystemInfo.jar'
-        // 混淆后的jar路径
-        outjars 'build/outputs/jar/SystemInfo.jar'
-        // 混淆文件
-        configuration 'proguard-rules.pro'
+    task clearJar(type: Delete) {
+        delete 'build/libs/ARSdk.jar'////这行表示如果你已经打过一次包了，再进行打包则把原来的包删掉
     }
+
+    task makeJar(type: Copy) {
+        from('build/intermediates/bundles/release/') //这行表示要打包的文件的路径，根据下面的内容，其实是该路径下的classes.jar
+        into('build/libs/')  //这行表示打包完毕后包的生成路径，也就是生成的包存在哪
+        include('classes.jar')  //看到这行，如果你对分包有了解的话，你就可以看出来这行它只是将一些类打包了
+        rename ('classes.jar', 'mySdk.jar')
+    }
+
+    makeJar.dependsOn(clearJar, build)
 
 
 }
+android {
+    lintOptions {
+        abortOnError false
+    }
+}
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:appcompat-v7:25.3.1'
-   // compile 'com.google.android.gms:play-services-maps:10.2.6'
     testCompile 'junit:junit:4.12'
+
 }
 
 

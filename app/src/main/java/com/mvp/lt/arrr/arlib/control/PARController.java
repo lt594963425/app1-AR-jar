@@ -2,11 +2,10 @@ package com.mvp.lt.arrr.arlib.control;
 
 import android.content.Context;
 import android.location.Location;
-import android.os.Build;
 import android.util.Log;
 
+import com.mvp.lt.arrr.arlib.BuildConfig;
 import com.mvp.lt.arrr.arlib.PARFragment;
-import com.mvp.lt.arrr.arlib.PARInstallation;
 import com.mvp.lt.arrr.arlib.enumm.PSKDeviceOrientation;
 import com.mvp.lt.arrr.arlib.listener.PSKEventListener;
 import com.mvp.lt.arrr.arlib.listener.PSKSensorManager;
@@ -29,7 +28,7 @@ import java.util.NoSuchElementException;
 
 
 public class PARController implements PSKEventListener {
-    public static boolean DEBUG = true;
+    public static boolean DEBUG = BuildConfig.API_ENV;
     public static float CLIP_POIS_NEARER_THAN = 5.0F;
     public static float CLIP_POIS_FARER_THAN = 1.0E7F;
     public static PARDataCollector dataCollector;
@@ -65,9 +64,6 @@ public class PARController implements PSKEventListener {
         Log.i(this.TAG, "init()");
 
         PARDataCollector dataCollector = new PARDataCollector();
-        String osVersion = Build.VERSION.RELEASE;
-        String deviceId = PARInstallation.id(ctx);
-
         PSKSensorManager.getSharedSensorManager().setEventListener(this);
     }
 
